@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  const [incompleteTodos, setIncompleteTodos] = useState([
+    "ああああ",
+    "いいいいい"
+  ]);
+
+  const [completedTodos, setCompletedTodos] = useState(["ううううう"]);
   return (
     <>
       <div className="input-area">
@@ -11,20 +17,28 @@ export const App = () => {
       <div className="incomplete-area">
         <p className="titile">未完了のTODO</p>
         <ul>
-          <li className="list-row">
-            <p className="row-title">あああ</p>
-            <button>完了</button>
-            <button>削除</button>
-          </li>
+          {incompleteTodos.map((todo) => {
+            return (
+              <li key={todo} className="list-row">
+                <p className="row-title">{todo}</p>
+                <button>完了</button>
+                <button>削除</button>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className="complete-area">
         <p>未完了のTODO</p>
         <ul>
-          <li className="list-row">
-            <p className="row-title">あああ</p>
-            <button>完了</button>
-          </li>
+          {completedTodos.map((todo) => {
+            return (
+              <li key={todo} className="list-row">
+                <p className="row-title">todo</p>
+                <button>完了</button>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>
